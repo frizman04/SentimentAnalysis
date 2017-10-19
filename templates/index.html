@@ -1,0 +1,75 @@
+<!doctype html>
+<title>Sentiment Demo</title>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    .btn-sq-lg {
+  width: 150px !important;
+  height: 150px !important;
+}
+
+</style>
+
+
+<div class="jumbotron">
+  <div class="container">
+      <h2>Оценка отзывов</h2>
+
+      <form class="form" action="{{ url_for('index') }}" method=post>
+        <div class="form-group">
+          <label for="review">Введите/вставте отзыв на твовар :</label>
+          <textarea name="text" class="form-control" rows="6" id="review">{{ text }}</textarea>
+        </div>
+        <button type="submit" class="btn  btn-default btn-lg">Оценить отзыв</button>
+      </form>
+
+
+
+  </div>
+</div>
+
+
+    <div class="row">
+
+
+        {% if clasifer_response == -1 %}
+            <div class="alert alert-warning col-md-10 col-md-offset-1">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong class="alert-heading">Упс, что-то пошло не так :(</strong>
+                      <p>НЛО прилетело и поломало класификатор.</p>
+            </div>
+        {% endif %}
+
+        {% if clasifer_response == 0 %}
+            <div class="alert alert-danger col-md-10 col-md-offset-1">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong class="alert-heading">Негативный :(</strong>
+                  <p>Классификатор считает что это негативный отзыв</p>
+            </div>
+        {% endif %}
+
+        {% if clasifer_response == 1 %}
+            <div class="alert alert-success col-md-10 col-md-offset-1">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong class="alert-heading">Позитивный :)</strong>
+                <p>Классификатор считает что это позитивный отзыв</p>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <!--<div class="row">-->
+        <!--<div class="col-md-10 col-md-offset-1">-->
+
+            <!--<a href="/rundemo" class="btn btn-default btn-lg">-->
+                <!--<span class="glyphicon glyphicon-bullhorn"></span>-->
+                <!--Run Demo-->
+            <!--</a>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+
