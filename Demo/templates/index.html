@@ -16,14 +16,14 @@
 
 <div class="jumbotron">
   <div class="container">
-      <h2>Оценка отзывов</h2>
+      <h2>Rating reviews</h2>
 
       <form class="form" action="{{ url_for('index') }}" method=post>
         <div class="form-group">
-          <label for="review">Введите/вставте отзыв на твовар :</label>
+          <label for="review">Give us feedback on the product :</label>
           <textarea name="text" class="form-control" rows="6" id="review">{{ text }}</textarea>
         </div>
-        <button type="submit" class="btn  btn-default btn-lg">Оценить отзыв</button>
+        <button type="submit" class="btn  btn-default btn-lg">Rate feedback</button>
       </form>
 
 
@@ -38,38 +38,28 @@
         {% if clasifer_response == -1 %}
             <div class="alert alert-warning col-md-10 col-md-offset-1">
                       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                      <strong class="alert-heading">Упс, что-то пошло не так :(</strong>
-                      <p>НЛО прилетело и поломало класификатор.</p>
+                      <strong class="alert-heading">Oops, something went wrong:(</strong>
+                      <p>The UFO flew in and broke the classifier.</p>
             </div>
         {% endif %}
 
         {% if clasifer_response == 0 %}
             <div class="alert alert-danger col-md-10 col-md-offset-1">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong class="alert-heading">Негативный :(</strong>
-                  <p>Классификатор считает что это негативный отзыв</p>
+                  <strong class="alert-heading">Negative feedback :(</strong>
+                  <p>The classifier believes that this is a negative feedback.</p>
             </div>
         {% endif %}
 
         {% if clasifer_response == 1 %}
             <div class="alert alert-success col-md-10 col-md-offset-1">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong class="alert-heading">Позитивный :)</strong>
-                <p>Классификатор считает что это позитивный отзыв</p>
+                <strong class="alert-heading">Positive feedback:)</strong>
+                <p>The classifier believes that this is a positive feedback.</p>
             </div>
         {% endif %}
 
     </div>
 
-    <!--<div class="row">-->
-        <!--<div class="col-md-10 col-md-offset-1">-->
-
-            <!--<a href="/rundemo" class="btn btn-default btn-lg">-->
-                <!--<span class="glyphicon glyphicon-bullhorn"></span>-->
-                <!--Run Demo-->
-            <!--</a>-->
-
-        <!--</div>-->
-    <!--</div>-->
 
 
